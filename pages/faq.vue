@@ -1,17 +1,18 @@
 <template>
 <div>
     <v-container>
-        <v-row>
+        <v-row class="justify-center">
       <v-col
-        cols="12"
+        cols="8"
       >
-        <v-card>
-          <v-card-title class="justify-center">Frequently Asked Questions</v-card-title>
-          <v-list>
+        <v-card class="red pa-6 mb-4">
+          <v-card-title class="justify-center white--text mb-3"><h1>Frequently Asked Questions</h1></v-card-title>
+          <v-list class="red">
               <v-list-item v-for="faq in faqs" :key="faq.id">
                 <v-list-item-content>
-                  <v-list-item-title v-html="faq.question"></v-list-item-title>
-                  <v-list-item-subtitle v-html="faq.answer"></v-list-item-subtitle>
+                  <v-list-item-title class=" white--text mb-3 font-weight-bold"><h2 v-html="faq.question"></h2></v-list-item-title>
+                  <v-list-item-subtitle class="white--text mb-3"><h2 v-html="faq.answer"></h2></v-list-item-subtitle>
+                  <v-divider></v-divider>
                 </v-list-item-content>
               </v-list-item>
           </v-list>
