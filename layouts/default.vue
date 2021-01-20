@@ -5,9 +5,9 @@
 
       <v-btn text color="white">Home</v-btn>
 
-      <v-btn text color="white">FAQ</v-btn>
+      <v-btn text color="white" to="/faq">FAQ</v-btn>
 
-      <v-btn text color="white">About Us</v-btn>
+      <v-btn text color="white" to="/aboutus">About Us</v-btn>
 
       <v-btn text color="white">Contact Us</v-btn>
 
