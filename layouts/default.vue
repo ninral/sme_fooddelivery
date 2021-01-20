@@ -3,21 +3,21 @@
     <v-system-bar color="red" class="mb-6 pa-7">
       <v-app-bar-title>Foodie</v-app-bar-title>
 
-      <v-tab text color="white" to="/">Home</v-tab>
+      <v-btn text color="white" to="/">Home</v-btn>
 
       <v-btn text color="white" to="/faq">FAQ</v-btn>
 
       <v-btn text color="white" to="/aboutus">About Us</v-btn>
 
-      <v-tab text color="white" to="/contact">Contact Us</v-tab>
+      <v-btn text color="white" to="/contact">Contact Us</v-btn>
 
-      <v-tab text color="white">...</v-tab>
+      <v-btn text color="white">...</v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-tab text color="white" to="/signin">Sign In</v-tab>
+      <v-btn text color="white" to="/signin">Sign In</v-btn>
 
-      <v-tab text color="white" to="/register">Register</v-tab>
+      <v-btn text color="white" to="/register">Register</v-btn>
     </v-system-bar>
 
     <div>
