@@ -6,16 +6,15 @@
                     <v-card class="red pa-6 mb-4">
                         <v-card-title class="white--text mb-3">Sign In</v-card-title>
 
-                        <!-- <v-form class="ma-2"> -->
+                        <v-form class="ma-2">
                             <v-text-field class="white--text mb-3" v-model="email" placeholder="Email" :rules="[rules.required, rules.email]"></v-text-field>
 
                             <v-text-field class="white--text mb-3" v-model="password" placeholder="Password" type="password" :rules="[rules.required]"></v-text-field>
 
                             <v-card-actions class="justify-center mb-3">
-                                <!-- <v-btn @click="signin()" class="white">Sign In</v-btn> -->
-                                <v-btn @click.once="signin()">Sign In</v-btn>
+                                <v-btn v-on:click.prevent="signin()">Sign In</v-btn>
                             </v-card-actions>
-                        <!-- </v-form> -->
+                        </v-form>
                     </v-card>
                     <v-alert type="error" v-if="error">
                         {{ error }}
@@ -30,7 +29,9 @@
 </template>
 
 <script>
-const firebase = require("../api/firebase");
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import { mapActions } from 'vuex'
 
 export default {
     data() {
@@ -50,18 +51,22 @@ export default {
     },
     methods: {
         signin(){
-            this.success = "processing..."
-            // firebase
-            //     .auth()
-            //     .signInWithEmailAndPassword(this.email, this.password)
-            //     .then(data => {
-            //         this.success = "Successfully signed in"
-            //         this.$router.replace({ name: "Dashboard" })
-            //     })
-            //     .catch(err => {
-            //         this.error = err.message
-            //     })
-        }  
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(this.email, this.password)
+                .then(data => {
+                    this.success = "Successfully signed in"
+                    // this.$store.commit('user/SET_LOGGED_IN', true)
+                    // this.$store.commit('user/SET_USER', data.user)
+                    // this.$store.dispatch("user/setUser", { data: data})
+                    //     .then(() => {
+                    //         this.success = "finally added to state"
+                    //     })  
+                })
+                .catch(err => {
+                    this.error = err.message
+                })
+        }
     },
 }
 </script>

@@ -1,6 +1,7 @@
-const firebase = require('firebase')
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
-const firebaseConfig = {
+let firebaseConfig = {
     apiKey: "AIzaSyBt6iU4YecRiWSc90Ud09AocuIYqoGbQQI",
     authDomain: "foodie-68d64.firebaseapp.com",
     projectId: "foodie-68d64",
@@ -8,11 +9,11 @@ const firebaseConfig = {
     messagingSenderId: "528340545222",
     appId: "1:528340545222:web:f816ac62ef1d2537ebb1c7",
     measurementId: "G-HTSGXEML3X"
-  };
+  }
 
-  firebase.apps.length ? firebase.app() : firebase.initializeApp(firebaseConfig)
-//   if (!firebase.apps.length) {
-//     firebase.initializeApp(firebaseConfig);
-//   }
+  let app = null
+  if(!firebase.apps.length){
+    app = firebase.initializeApp(firebaseConfig)
+  }
 
-module.exports = firebase
+  export default firebase

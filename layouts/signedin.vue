@@ -15,9 +15,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-tab text color="white" to="/signin">Sign In</v-tab>
-
-      <v-tab text color="white" to="/register">Register</v-tab>
+      <v-tab text color="white" @click="logout()">Logout</v-tab>
     </v-system-bar>
 
     <div>
@@ -32,6 +30,13 @@ export default {
     return {
 
     }
-  }
+  },
+  methods: {
+      logout(){
+          this.$store.commit("user/SET_LOGGED_IN", false)
+          this.$store.commit("user/SET_USER", undefined)
+          this.$router.push("/")
+      }
+  },
 }
 </script>

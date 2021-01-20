@@ -1,3 +1,5 @@
+import { Promise } from "core-js";
+
 export const state = () => ({
     user: {
         loggedIn: false,
@@ -12,24 +14,17 @@ export const getters = {
 }
 
 export const mutations = {
-    SET_LOGGED_IN(state, value) {
-        state.user.loggedIn = value;
-    },
     SET_USER(state, data) {
         state.user.data = data;
+        state.user.loggedIn = !!data
     }
 }
 
 export const actions = {
-    fetchUser({ commit }, user) {
-        commit("SET_LOGGED_IN", user !== null);
-        if (user) {
-          commit("SET_USER", {
-            displayName: user.displayName,
-            email: user.email
-          });
-        } else {
-          commit("SET_USER", null);
-        }
-      }
+    setUser({ commit }, { data }){
+        return new Promise((resolve) => {
+            commit("SET_USER", data.user)
+            resolve()
+        })
+    }
 }
