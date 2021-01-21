@@ -73,9 +73,15 @@ export default {
                             firebase.auth().onAuthStateChanged((user) => {
                                 if(user) {
                                     this.success = "Successfully registered"
-                                    // this.$store.commit('user/SET_LOGGED_IN', true)
-                                    // this.$store.commit('user/SET_USER', data.user)
-                                    // this.$router.push("/dashboard").catch(() => {})
+                                    let user = {
+                                        id: data.user.uid,
+                                        displayName: data.user.displayName,
+                                        email: data.user.email
+                                    }
+                                    this.$store.dispatch("user/setUser", { user: user, loggedIn: true })
+                                        .then(() => {
+                                            this.$router.push("/dashboard")
+                                        })
                                 }
                             })
                         })

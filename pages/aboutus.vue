@@ -260,10 +260,18 @@
       <v-col
         cols="8"
       >
-        <v-card class="red pa-6 mb-4">
+        <v-card class="red mb-4 text-center">
           <v-card-title class="justify-center white--text mb-3"><h1>Our location</h1></v-card-title>
-                      <div class="mapouter"><div class="gmap_canvas"><iframe width="800" height="600" id="gmap_canvas" src="https://maps.google.com/maps?q=No%2039,%20Jalan%20AU2A%20/2%20Taman%20Sri%20Keramat%20Kuala%20Lumpur,%2054200%20Wilayah%20Persekutuan,%20Wilayah%20Persekutuan%20Kuala%20Lumpur,%20Malaysia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://embedgooglemap.net/maps/49"></a><br><style>.mapouter{position:relative;text-align:center;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">embedgooglemap.net</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:1100px;}</style></div></div>
-
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=No%2039,%20Jalan%20AU2A%20/2%20Taman%20Sri%20Keramat%20Kuala%20Lumpur,%2054200%20Wilayah%20Persekutuan,%20Wilayah%20Persekutuan%20Kuala%20Lumpur,%20Malaysia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <a href="https://embedgooglemap.net/maps/49"></a>
+                    <br>
+                    <style>.mapouter{height:500px;width:500px;}</style>
+                    <a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
+                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:750px;}</style>
+                </div>
+            </div>
         </v-card>
       </v-col>
     </v-row>
@@ -283,12 +291,10 @@ import 'firebase/firestore'
 const db = firebase.firestore()
 export default {
   data(){
-    return {
-      
-      faqs: []
-
+    return { 
+        faqs: [],
+        show: false
     }
-
   },
   
   mounted() {

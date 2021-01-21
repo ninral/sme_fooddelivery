@@ -1,4 +1,4 @@
-import { Promise } from "core-js";
+export const strict = false
 
 export const state = () => ({
     user: {
@@ -14,17 +14,20 @@ export const getters = {
 }
 
 export const mutations = {
-    SET_USER(state, data) {
-        state.user.data = data;
-        state.user.loggedIn = !!data
+    SET_USER(state, { user, loggedIn}) {
+        state.user.data = user;
+        state.user.loggedIn = loggedIn
     }
 }
 
 export const actions = {
-    setUser({ commit }, { data }){
-        return new Promise((resolve) => {
-            commit("SET_USER", data.user)
-            resolve()
-        })
+    setUser({ commit }, data){
+        console.log(data)
+        
+        // return new Promise((resolve) => {
+        //     console.log(data.user)
+        //     resolve()
+        // })
+        commit("SET_USER", JSON.parse(JSON.stringify(data)))
     }
 }

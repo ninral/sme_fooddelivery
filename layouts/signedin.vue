@@ -3,15 +3,17 @@
     <v-system-bar color="red" class="mb-6 pa-7">
       <v-app-bar-title>Foodie</v-app-bar-title>
 
-      <v-tab text color="white" to="/">Home</v-tab>
+      <v-btn text color="white" to="/">Home</v-btn>
 
-      <v-tab text color="white">FAQ</v-tab>
+      <v-btn text color="white" to="/dashboard">Dashboard</v-btn>
 
-      <v-tab text color="white">About Us</v-tab>
+      <v-btn text color="white" to="/settings">Settings</v-btn>
 
-      <v-tab text color="white" to="/contact">Contact Us</v-tab>
+      <!-- <v-btn text color="white" to="/aboutus">About Us</v-btn>
 
-      <v-tab text color="white">...</v-tab>
+      <v-btn text color="white" to="/contact">Contact Us</v-btn> -->
+
+      <v-btn text color="white" to="/restaurants">Restaurants</v-btn>
 
       <v-spacer></v-spacer>
 
@@ -33,9 +35,11 @@ export default {
   },
   methods: {
       logout(){
-          this.$store.commit("user/SET_LOGGED_IN", false)
-          this.$store.commit("user/SET_USER", undefined)
-          this.$router.push("/")
+          let user = undefined
+          this.$store.dispatch("user/setUser", { user: undefined, loggedIn: false })
+            .then(() => {
+              this.$router.push("/")
+            })
       }
   },
 }

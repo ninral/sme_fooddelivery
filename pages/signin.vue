@@ -31,7 +31,6 @@
 <script>
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import { mapActions } from 'vuex'
 
 export default {
     data() {
@@ -56,12 +55,15 @@ export default {
                 .signInWithEmailAndPassword(this.email, this.password)
                 .then(data => {
                     this.success = "Successfully signed in"
-                    // this.$store.commit('user/SET_LOGGED_IN', true)
-                    // this.$store.commit('user/SET_USER', data.user)
-                    // this.$store.dispatch("user/setUser", { data: data})
-                    //     .then(() => {
-                    //         this.success = "finally added to state"
-                    //     })  
+                    let user = {
+                        id: data.user.uid,
+                        displayName: data.user.displayName,
+                        email: data.user.email
+                    }
+                    this.$store.dispatch("user/setUser", { user: user, loggedIn: true })
+                        .then(() => {
+                            this.$router.push("/dashboard")
+                        })
                 })
                 .catch(err => {
                     this.error = err.message
