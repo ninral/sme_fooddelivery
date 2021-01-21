@@ -8,24 +8,23 @@
       >
         <v-card class="red pa-6 mb-4">
           <v-card-title class="justify-center white--text mb-3"><h1>About us</h1></v-card-title>
-          <p class="white--text mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit commodi maxime, veritatis laborum nihil voluptatibus itaque officiis est a tenetur aliquid soluta facilis mollitia quasi vel explicabo eius provident magnam aliquam magni consectetur quibusdam delectus odit? Voluptatem ullam exercitationem rem reprehenderit minima eligendi autem quos dolores! Provident eaque tempora esse ratione assumenda! Accusamus maiores dignissimos, nihil eos deleniti odit sint? Ea assumenda voluptas eveniet voluptatum voluptatibus placeat hic dicta amet possimus natus reprehenderit inventore libero, unde repellendus eligendi! Repellat dolor dignissimos, tempore, ut fugit eveniet laboriosam cum laudantium alias debitis quibusdam distinctio tenetur magni quo id hic. Ducimus, veritatis mollitia.</p>
+          <p class="white--text mb-3">Foodie is a company that is established in 2020 in Kuala Lumpur. With our website, you can order your favorite food from your favorite restaurants. We are collaborating with a variety of restaurants in KL and Selangor so you can have your favorite meal with few clicks while you're relaxing where you are. our mission is to make the food delivery experience as convenient as possible to our clients while our vision is to to be the leading food delivery company in east asia.   </p>
         </v-card>
       </v-col>
     </v-row>
     <!--end of about-->
 
 
- <!--What makes us different-->
+ <!--Our values-->
       <v-row class="justify-center">
       <v-col
         cols="8"
       >
         <v-card class="red pa-6 mb-4">
-          <v-card-title class="justify-center white--text mb-3"><h1>What makes us different</h1></v-card-title>
+          <v-card-title class="justify-center white--text mb-3"><h1>Our values</h1></v-card-title>
     <v-row>
       <v-col
-        v-for="n in 3"
-        :key="n"
+        
         cols="12"
         sm="6"
         lg="4"
@@ -36,35 +35,19 @@
     max-width="344"
   >
     <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="300px"
+      src="https://png2.cleanpng.com/sh/f41044e2806b2d1aaff5d7ba3c2d08e8/L0KzQYm3U8E5N6Z3fZH0aYP2gLBuTfNpbZRwRd9qcnuwc7F0kQV1baMygdV4boOwc73wkL1ieqUyiNtsdIX1dcS0jBYua5lqe902NXHkdbTshMA6a5c3T6I3NUa5Q4OAVMIyPWM2TKIANkS7RoW5Wb5xdpg=/kisspng-check-mark-computer-icons-clip-art-pictures-of-check-5aaeced09cf270.5663274215214056486429.png"
+      height="300px" 
     ></v-img>
 
     <v-card-title>
-      Top western road trips
+      ON TIME DELIVERY
     </v-card-title>
 
     <v-card-subtitle>
-      1,000 miles of wonder
+      We make sure that your food deliver to your door at the right time
     </v-card-subtitle>
 
-    <v-card-actions>
-      <v-btn
-        color="orange lighten-2"
-        text
-      >
-        View Details
-      </v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
+ 
 
     <v-expand-transition>
       <div v-show="show">
@@ -77,11 +60,86 @@
     </v-expand-transition>
   </v-card>
       </v-col>
+         <v-col
+        
+        cols="12"
+        sm="6"
+        lg="4"
+      >
+      <div ></div>
+  <v-card id="card"
+    class="mx-auto"
+    max-width="344"
+  >
+    <v-img
+      src="https://png2.cleanpng.com/sh/f41044e2806b2d1aaff5d7ba3c2d08e8/L0KzQYm3U8E5N6Z3fZH0aYP2gLBuTfNpbZRwRd9qcnuwc7F0kQV1baMygdV4boOwc73wkL1ieqUyiNtsdIX1dcS0jBYua5lqe902NXHkdbTshMA6a5c3T6I3NUa5Q4OAVMIyPWM2TKIANkS7RoW5Wb5xdpg=/kisspng-check-mark-computer-icons-clip-art-pictures-of-check-5aaeced09cf270.5663274215214056486429.png"
+      height="300px" 
+    ></v-img>
+
+    <v-card-title>
+      VARIETY OF OPTIONS
+    </v-card-title>
+
+    <v-card-subtitle>
+      We make sure that your food deliver to your door at the right time
+    </v-card-subtitle>
+
+ 
+
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
+
+        <v-card-text>
+          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+        </v-card-text>
+      </div>
+    </v-expand-transition>
+  </v-card>
+      </v-col>
+         <v-col
+        
+        cols="12"
+        sm="6"
+        lg="4"
+      >
+      <div ></div>
+  <v-card id="card"
+    class="mx-auto"
+    max-width="344"
+  >
+    <v-img
+      src="https://png2.cleanpng.com/sh/f41044e2806b2d1aaff5d7ba3c2d08e8/L0KzQYm3U8E5N6Z3fZH0aYP2gLBuTfNpbZRwRd9qcnuwc7F0kQV1baMygdV4boOwc73wkL1ieqUyiNtsdIX1dcS0jBYua5lqe902NXHkdbTshMA6a5c3T6I3NUa5Q4OAVMIyPWM2TKIANkS7RoW5Wb5xdpg=/kisspng-check-mark-computer-icons-clip-art-pictures-of-check-5aaeced09cf270.5663274215214056486429.png"
+      height="300px" 
+    ></v-img>
+
+    <v-card-title>
+      24 HOURS SERVICE
+    </v-card-title>
+
+    <v-card-subtitle>
+      You can order your favourate meal any time you want
+    </v-card-subtitle>
+
+ 
+
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
+
+        <v-card-text>
+          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+        </v-card-text>
+      </div>
+    </v-expand-transition>
+  </v-card>
+      </v-col>
+      
     </v-row>
         </v-card>
       </v-col>
     </v-row>
-    <!--end of wat makes us different-->
+    <!--end of our values-->
     <!--coverage area-->
           <v-row class="justify-center">
       <v-col
@@ -91,8 +149,6 @@
           <v-card-title class="justify-center white--text mb-3"><h1>Our converage area</h1></v-card-title>
     <v-row>
       <v-col
-        v-for="n in 2"
-        :key="n"
         cols="12"
         sm="6"
         
@@ -103,35 +159,49 @@
    
   >
     <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Flag_of_Selangor.svg/1600px-Flag_of_Selangor.svg.png"
       height="300px"
     ></v-img>
 
     <v-card-title>
-      Top western road trips
+      SELANGOR
     </v-card-title>
 
     <v-card-subtitle>
-      1,000 miles of wonder
     </v-card-subtitle>
 
-    <v-card-actions>
-      <v-btn
-        color="orange lighten-2"
-        text
-      >
-        View Details
-      </v-btn>
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
+        <v-card-text>
+          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+        </v-card-text>
+      </div>
+    </v-expand-transition>
+  </v-card>
+      </v-col>
+      <v-col
+        cols="12"
+        sm="6"
+        
       >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
+      <div ></div>
+  <v-card id="card"
+    class="mx-auto"
+   
+  >
+    <v-img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Malaysia.svg/2880px-Flag_of_Malaysia.svg.png"
+      height="300px"
+    ></v-img>
+
+    <v-card-title>
+      KUALA LUMPUR
+    </v-card-title>
+
+    <v-card-subtitle>
+    </v-card-subtitle>
 
     <v-expand-transition>
       <div v-show="show">
