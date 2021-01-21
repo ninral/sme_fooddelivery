@@ -23,11 +23,18 @@
                         </v-list>
 
                         <v-card-actions>
+                            <v-btn color="red white--text" outlined @click="emptyCart()">Empty Cart</v-btn>
                             <v-btn color="red white--text">Checkout</v-btn>
                         </v-card-actions>
                     </v-card>
                     <v-card v-else>
-                        <v-card-subtitle>You have no items in your cart</v-card-subtitle>
+                        <v-card-title class="justify-center">Your Cart</v-card-title>
+
+                        <v-card-subtitle class="text-center py-6">You have no items in your cart</v-card-subtitle>
+
+                        <v-card-actions class="justify-center">
+                            <v-btn to="/restaurants" color="red white--text">Checkout Restaurants</v-btn>
+                        </v-card-actions>
                     </v-card>
                 </v-col>
             </v-row>
@@ -70,6 +77,17 @@ export default {
                 return this.restaurant.menu[index].name
             }
             return ""
+        },
+        emptyCart(){
+            db.ref('/cart/' + this.user.id).remove((error) => {
+                if(error){
+                    console.log(error)
+                } else {
+                    db.ref('/cart/' + this.user.id).once('value').then((querySnapshot) => {
+                        this.cart = querySnapshot.val()
+                    })
+                }
+            })
         }
     },
     computed: {

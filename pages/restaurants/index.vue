@@ -9,8 +9,8 @@
                 </v-col>
             </v-row>
             <v-row>
-                <v-col cols="4">
-                    <v-card v-for="(restaurant, index) in restaurants" :key="index">
+                <v-col cols="4" v-for="(restaurant, index) in restaurants" :key="index">
+                    <v-card>
                         <v-img :src="restaurant.image_url" height="200px"></v-img>
                         <v-card-title>{{ restaurant.name }}</v-card-title>
                         <v-card-subtitle>{{ restaurant.location }}</v-card-subtitle>
