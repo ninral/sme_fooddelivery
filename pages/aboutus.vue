@@ -267,9 +267,9 @@
                     <iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=No%2039,%20Jalan%20AU2A%20/2%20Taman%20Sri%20Keramat%20Kuala%20Lumpur,%2054200%20Wilayah%20Persekutuan,%20Wilayah%20Persekutuan%20Kuala%20Lumpur,%20Malaysia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     <a href="https://embedgooglemap.net/maps/49"></a>
                     <br>
-                    <style>.mapouter{height:500px;width:500px;}</style>
+                    <style>.mapouter{height:500px;width:800px;}</style>
                     <a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
-                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:750px;}</style>
+                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:1200px;}</style>
                 </div>
             </div>
         </v-card>
