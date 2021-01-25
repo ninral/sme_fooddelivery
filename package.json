@@ -12,6 +12,8 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
     "core-js": "^3.8.2",
+    "firebase": "^8.2.4",
+    "flush-promises": "^1.0.2",
     "nuxt": "^2.14.12"
   },
   "devDependencies": {
