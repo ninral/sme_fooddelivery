@@ -1,70 +1,117 @@
 <template>
-  <v-app>
-    <v-system-bar color="red" class="mb-6 pa-7">
-      <v-app-bar-title>Foodie</v-app-bar-title>
-
-      <v-btn text color="white" to="/">Home</v-btn>
-
-      <div v-if="loggedIn">
-        <v-btn text color="white" to="/dashboard">Dashboard</v-btn>
-      </div>
-
-      <v-btn text color="white" to="/faq">FAQ</v-btn>
-
-      <div v-if="!loggedIn">
-        <v-btn text color="white" to="/aboutus">About Us</v-btn>
-
-        <v-btn text color="white" to="/contact">Contact Us</v-btn>
-      </div>
-      <div>
-
-      </div>
-
-      <v-btn text color="white" to="/restaurants">Restaurants</v-btn>
-
-      <v-spacer></v-spacer>
-
-    <div v-if="!loggedIn">
-      <v-btn text color="white" to="/signin">Sign In</v-btn>
-
-      <v-btn text color="white" to="/register">Register</v-btn>
-    </div>
-    <div v-else>
-      <v-btn text color="white" @click="logout()">Logout</v-btn>
-    </div>
-    </v-system-bar>
-
-    <div>
-      <nuxt />
-    </div>
+  <v-app dark>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant="miniVariant"
+      :clipped="clipped"
+      fixed
+      app
+    >
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar
+      :clipped-left="clipped"
+      fixed
+      app
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-btn
+        icon
+        @click.stop="miniVariant = !miniVariant"
+      >
+        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.stop="clipped = !clipped"
+      >
+        <v-icon>mdi-application</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.stop="fixed = !fixed"
+      >
+        <v-icon>mdi-minus</v-icon>
+      </v-btn>
+      <v-toolbar-title v-text="title" />
+      <v-spacer />
+      <v-btn
+        icon
+        @click.stop="rightDrawer = !rightDrawer"
+      >
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <nuxt />
+      </v-container>
+    </v-main>
+    <v-navigation-drawer
+      v-model="rightDrawer"
+      :right="right"
+      temporary
+      fixed
+    >
+      <v-list>
+        <v-list-item @click.native="right = !right">
+          <v-list-item-action>
+            <v-icon light>
+              mdi-repeat
+            </v-icon>
+          </v-list-item-action>
+          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-footer
+      :absolute="!fixed"
+      app
+    >
+      <span>&copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {
   data () {
     return {
-
+      clipped: false,
+      drawer: false,
+      fixed: false,
+      items: [
+        {
+          icon: 'mdi-apps',
+          title: 'Welcome',
+          to: '/'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Inspire',
+          to: '/inspire'
+        }
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: 'Vuetify.js'
     }
-  },
-  methods: {
-    logout(){
-          let user = undefined
-          this.$store.dispatch("user/setUser", { user: undefined, loggedIn: false })
-            .then(() => {
-              this.$router.push("/")
-            })
-      }
-  },
-  computed: {
-    ...mapState({
-      user: state => state.user.user.data,
-      loggedIn: state => state.user.user.loggedIn
-    })
-  },
+  }
 }
 </script>
-
-
