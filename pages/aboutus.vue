@@ -35,8 +35,7 @@
     max-width="344"
   >
     <v-img
-      src="https://png2.cleanpng.com/sh/f41044e2806b2d1aaff5d7ba3c2d08e8/L0KzQYm3U8E5N6Z3fZH0aYP2gLBuTfNpbZRwRd9qcnuwc7F0kQV1baMygdV4boOwc73wkL1ieqUyiNtsdIX1dcS0jBYua5lqe902NXHkdbTshMA6a5c3T6I3NUa5Q4OAVMIyPWM2TKIANkS7RoW5Wb5xdpg=/kisspng-check-mark-computer-icons-clip-art-pictures-of-check-5aaeced09cf270.5663274215214056486429.png"
-      height="300px" 
+      src="https://www.clker.com/cliparts/m/u/v/L/z/g/circle-check-red.svg.med.png"
     ></v-img>
 
     <v-card-title>
@@ -72,8 +71,7 @@
     max-width="344"
   >
     <v-img
-      src="https://png2.cleanpng.com/sh/f41044e2806b2d1aaff5d7ba3c2d08e8/L0KzQYm3U8E5N6Z3fZH0aYP2gLBuTfNpbZRwRd9qcnuwc7F0kQV1baMygdV4boOwc73wkL1ieqUyiNtsdIX1dcS0jBYua5lqe902NXHkdbTshMA6a5c3T6I3NUa5Q4OAVMIyPWM2TKIANkS7RoW5Wb5xdpg=/kisspng-check-mark-computer-icons-clip-art-pictures-of-check-5aaeced09cf270.5663274215214056486429.png"
-      height="300px" 
+      src="https://www.clker.com/cliparts/m/u/v/L/z/g/circle-check-red.svg.med.png"
     ></v-img>
 
     <v-card-title>
@@ -109,8 +107,7 @@
     max-width="344"
   >
     <v-img
-      src="https://png2.cleanpng.com/sh/f41044e2806b2d1aaff5d7ba3c2d08e8/L0KzQYm3U8E5N6Z3fZH0aYP2gLBuTfNpbZRwRd9qcnuwc7F0kQV1baMygdV4boOwc73wkL1ieqUyiNtsdIX1dcS0jBYua5lqe902NXHkdbTshMA6a5c3T6I3NUa5Q4OAVMIyPWM2TKIANkS7RoW5Wb5xdpg=/kisspng-check-mark-computer-icons-clip-art-pictures-of-check-5aaeced09cf270.5663274215214056486429.png"
-      height="300px" 
+      src="https://www.clker.com/cliparts/m/u/v/L/z/g/circle-check-red.svg.med.png"
     ></v-img>
 
     <v-card-title>
