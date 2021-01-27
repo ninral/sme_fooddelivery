@@ -16,16 +16,16 @@
                 </v-col>
             </v-row>
             <v-row>
-                <v-col cols="4" v-for="(item, index) in getFilteredCalories()" :key="index">
+                <v-col cols="4" v-for="item in getFilteredCalories()" :key="item.id">
                     <v-card>
                         <v-card-title>{{ item.name }}</v-card-title>
                         <v-card-subtitle>Calories: {{ item.calories }}</v-card-subtitle>
                         <v-card-subtitle>Price: {{ item.price }} RM</v-card-subtitle>
-                        <v-card-actions class="justify-center" v-if="user.hasOwnProperty('id') && cartHasMenuItem(index)">
-                            <v-card-subtitle>Quantity: {{ cart.items['item' + index].quantity }}</v-card-subtitle>
+                        <v-card-actions class="justify-center" v-if="user.hasOwnProperty('id') && cartHasMenuItem(item.id)">
+                            <v-card-subtitle>Quantity: {{ cart.items['item' + item.id].quantity }}</v-card-subtitle>
                         </v-card-actions>
                         <v-card-actions class="justify-center">
-                            <v-btn color="red white--text" @click="addToCart(index)" v-if="user && user.hasOwnProperty('id')">Add to cart</v-btn>
+                            <v-btn color="red white--text" @click="addToCart(item.id)" v-if="user && user.hasOwnProperty('id')">Add to cart</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -65,6 +65,9 @@ export default {
         }
         db.ref(`/restaurants/${this.$route.params.id}`).once('value').then((querySnapshot) => {
             this.restaurant = querySnapshot.val()
+            this.restaurant.menu.forEach((item, index) =>{
+                item.id = index
+            })
         })
 
         if(this.user && this.user.hasOwnProperty("id")){
@@ -76,7 +79,7 @@ export default {
     methods: {
         getMenuItemName(index){
             if(this.restaurant.hasOwnProperty("menu")){
-                return this.restaurant.menu[index].name
+                return this.restaurant.menu.find(item => item.id == index).name
             }
             return undefined
         },

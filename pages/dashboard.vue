@@ -94,6 +94,9 @@ export default {
             if(this.cart){
                 db.ref('/restaurants/' + this.cart.restaurant).once('value').then((querySnapshot) => {
                     this.restaurant = querySnapshot.val()
+                    this.restaurant.menu.forEach((item, index) =>{
+                        item.id = index
+                    })
                 })
             }
         })
@@ -107,7 +110,7 @@ export default {
     methods: {
         getMenuItemName(index){
             if(this.restaurant.hasOwnProperty("menu")){
-                return this.restaurant.menu[index.charAt(index.length-1)].name
+                return this.restaurant.menu[index.slice(4)].name
             }
             return ""
         },

@@ -20,6 +20,11 @@
                                         <v-select v-model="restaurantTypeFilter" :items="getRestaurantTypes()" item-text="title" item-value="value" label="Restaurant Type"></v-select>
                                     </v-col>
                                 </v-row>
+                                <v-row class="justify-center">
+                                    <v-col cols="6">
+                                        <v-select v-model="restaurantPriceRangeFilter" :items="restaurantPriceRange" item-text="title" item-value="value" label="Restaurant Price Range"></v-select>
+                                    </v-col>
+                                </v-row>
 
                                 <v-card-actions>
                                     <v-btn color="red white--text" outlined @click="resetFilters()">Reset Filters</v-btn>
@@ -41,13 +46,13 @@
                 </v-col>
             </v-row>
             <v-row>
-                <v-col cols="4" v-for="(restaurant, index) in getFilteredRestaurants()" :key="index">
+                <v-col cols="4" v-for="restaurant in getFilteredRestaurants()" :key="restaurant.id">
                     <v-card>
                         <v-img :src="restaurant.image_url" height="200px"></v-img>
                         <v-card-title>{{ restaurant.name }}</v-card-title>
                         <v-card-subtitle>{{ restaurant.location }}</v-card-subtitle>
                         <v-card-actions class="justify-center">
-                            <v-btn color="red white--text" :to="'/restaurants/' + index">Check Restaurant</v-btn>
+                            <v-btn color="red white--text" :to="'/restaurants/' + restaurant.id">Check Restaurant</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -70,12 +75,23 @@ export default {
             restaurantTypeFilter: "All",
             restaurantTypes: [
                 "All"
+            ],
+            restaurantPriceRangeFilter: "All",
+            restaurantPriceRange: [
+                "All", 
+                "1-20",
+                "21-40",
+                "41-60",
+                "61-80"
             ]
         }
     },
     beforeMount() {
         db.ref('/restaurants').once('value').then((querySnapshot) => {
             this.restaurants = querySnapshot.val()
+            this.restaurants.forEach((restaurant, index) => {
+                restaurant.id = index
+            })
         })
     },
     methods: {
@@ -103,15 +119,27 @@ export default {
             this.restaurantTypeFilter = "All"
         },
         getFilteredRestaurants(){
-            if(this.restaurants.length > 0){
+            let filtered = this.restaurants
+            if(filtered){
                 if(this.restaurantTypeFilter != "All"){
-                    return this.restaurants.filter((restaurant) => {
-                        return restaurant.location.toLowerCase().includes(this.areaFilter.toLowerCase()) && restaurant.type == this.restaurantTypeFilter
+                    filtered = filtered.filter((restaurant) => {
+                        return restaurant.type == this.restaurantTypeFilter
                     })
                 }
-                return this.restaurants.filter((restaurant) => {
-                    return restaurant.location.toLowerCase().includes(this.areaFilter.toLowerCase())
-                })
+
+                if(this.restaurantPriceRangeFilter != "All"){
+                    filtered = filtered.filter((restaurant) => {
+                        return restaurant.priceRange == this.restaurantPriceRangeFilter
+                    })
+                }
+
+                if(this.areaFilter){
+                    filtered = filtered.filter((restaurant) => {
+                        return restaurant.location.toLowerCase().includes(this.areaFilter.toLowerCase())
+                    })
+                }
+
+                return filtered
             }
             return this.restaurants
         }
