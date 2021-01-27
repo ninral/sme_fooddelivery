@@ -40,13 +40,13 @@
             </v-row>
             <v-row>
                 <v-col>
-                    <!-- <v-card v-if="orders">
+                    <v-card v-if="orders">
                         <v-card-title class="justify-center">Your Orders</v-card-title>
                         <v-list>
-                            <v-list-group v-for="(order, index) in orders" :key="index">
+                            <v-list-group v-for="(order, index) in undeliveredOrders()" :key="index">
                                 <template v-slot:activator>
                                     <v-list-item-content>
-                                        <v-list-item-title>{{ getRestaurantNameMethod(order.restaurant) }} - Order Date: {{ order.order_date }}</v-list-item-title>
+                                        <v-list-item-title>{{ getRestaurantNameMethod(order.restaurant) }} - Order Date: {{ getDate(order.order_time) }} - Not Delivered Yet</v-list-item-title>
                                     </v-list-item-content>
                                 </template>
 
@@ -60,7 +60,7 @@
                         <v-card-title class="justify-center">Your Orders</v-card-title>
 
                         <v-card-subtitle class="text-center py-6">You have no previous orders</v-card-subtitle>
-                    </v-card> -->
+                    </v-card>
                 </v-col>
             </v-row>
         </v-container>
@@ -94,6 +94,9 @@ export default {
             if(this.cart){
                 db.ref('/restaurants/' + this.cart.restaurant).once('value').then((querySnapshot) => {
                     this.restaurant = querySnapshot.val()
+                    this.restaurant.menu.forEach((item, index) =>{
+                        item.id = index
+                    })
                 })
             }
         })
@@ -107,7 +110,7 @@ export default {
     methods: {
         getMenuItemName(index){
             if(this.restaurant.hasOwnProperty("menu")){
-                return this.restaurant.menu[index.charAt(index.length-1)].name
+                return this.restaurant.menu[index.slice(4)].name
             }
             return ""
         },
@@ -124,19 +127,25 @@ export default {
         },
         checkout(){
             let order = {}
+            let orderNum = 0
             if(this.orders){
                 order = {
-                    [this.orders.length]: this.cart,
-                    order_time: new Date(),
-                    isDelivered: false,
+                      items: this.cart.items,
+                      order_time: Date(),
+                      isDelivered: false,
+                      restaurant: this.cart.restaurant
                 }
+                orderNum = this.orders.length || 0
             } else {
                 order = {
-                    0: this.cart,
-                    
+                    items: this.cart.items,
+                    order_time: Date(),
+                    isDelivered: false,
+                    restaurant: this.cart.restaurant
                 }
+
             }
-            db.ref('/orders/' + this.user.id).set(order, (error) => {
+            db.ref('/orders/' + this.user.id + "/" + orderNum).set(order, (error) => {
                 if(error){
                     console.log(error)
                 } else {
@@ -156,17 +165,34 @@ export default {
             })
         },
         getRestaurantNameMethod(index){
-            return this.restaurants.filter((r, i) => i == index).name
+          let rest = this.restaurants.find((r, i) => i == index)
+          if(rest){
+            return rest.name
+          }
+          return ""
         },
         getRestaurantMenuItem(restaurant, item_index){
-            let rest = this.restaurants.filter((r, i) => i == restaurant)
-            if(rest.hasOwnProperty("menu")){
-                return rest.menu.filter((item, index) => index == item_index.charAt(item_index.length-1))
+            let rest = this.restaurants.find((r, i) => i == restaurant)
+            if(rest){
+                return rest.menu.find((item, index) => index == item_index.charAt(item_index.length-1))
             }
             let menu = {
                 name: ""
             }
             return menu
+        },
+        undeliveredOrders(){
+          if(this.orders){
+            return this.orders.filter((order) => {
+              return !(order.isDelivered)
+            })
+          }
+          return this.orders
+        },
+        getDate(date){
+          var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          let newDate = new Date(date)
+          return newDate.getHours() + ":" + newDate.getMinutes() + " " + newDate.getDate() + "-" + months[newDate.getMonth()] + "-" +newDate.getFullYear()
         }
     },
     computed: {
