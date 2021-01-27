@@ -266,7 +266,7 @@
                     <br>
                     <style>.mapouter{height:500px;width:800px;}</style>
                     <a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
-                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:1200px;}</style>
+                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:750px;}</style>
                 </div>
             </div>
         </v-card>

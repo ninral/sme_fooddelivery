@@ -10,8 +10,8 @@
           <v-list class="red">
               <v-list-item v-for="faq in faqs" :key="faq.id">
                 <v-list-item-content>
-                  <v-list-item-title class=" white--text mb-3 font-weight-bold"><h2 v-html="faq.question"></h2></v-list-item-title>
-                  <v-list-item-subtitle class="white--text mb-3"><h2 v-html="faq.answer"></h2></v-list-item-subtitle>
+                  <v-list-item-title class=" white--text mb-3 font-weight-bold text-wrap"><h2 v-html="faq.question"></h2></v-list-item-title>
+                  <v-list-item-subtitle class="white--text mb-3 text-wrap">{{ faq.answer }}</v-list-item-subtitle>
                   <v-divider></v-divider>
                 </v-list-item-content>
               </v-list-item>
