@@ -10,8 +10,13 @@
                     </v-card>
                 </v-col>
             </v-row>
+            <v-row class="justify-center">
+                <v-col cols="6">
+                    <v-select v-model="caloriesFilter" :items="caloriesList" item-text="title" item-value="value" label="Filter by calories..."></v-select>
+                </v-col>
+            </v-row>
             <v-row>
-                <v-col cols="4" v-for="(item, index) in restaurant.menu" :key="index">
+                <v-col cols="4" v-for="(item, index) in getFilteredCalories()" :key="index">
                     <v-card>
                         <v-card-title>{{ item.name }}</v-card-title>
                         <v-card-subtitle>Calories: {{ item.calories }}</v-card-subtitle>
@@ -40,6 +45,14 @@ export default {
             restaurant: {},
             user: {},
             cart: {},
+            caloriesFilter: "All",
+            caloriesList: [
+                "All",
+                "0-300",
+                "301-600",
+                "601-900",
+                "901-1200",
+            ]
         }
     },
     beforeMount() {
@@ -106,6 +119,36 @@ export default {
                 }
             })
         },
+        getFilteredCalories(){
+            if(this.restaurant){
+                switch(this.caloriesFilter){
+                    case "0-300":
+                        return this.restaurant.menu.filter((item) => {
+                            return (item.calories <= 300) && (item.calories >= 0) 
+                        })
+                        break
+                    case "301-600":
+                        return this.restaurant.menu.filter((item) => {
+                            return (item.calories <= 600) && (item.calories >= 301) 
+                        })
+                        break
+                    case "601-900":
+                        return this.restaurant.menu.filter((item) => {
+                            return (item.calories <= 900) && (item.calories >= 601) 
+                        })
+                        break
+                    case "901-1200":
+                        return this.restaurant.menu.filter((item) => {
+                            return (item.calories <= 1200) && (item.calories >= 901) 
+                        })
+                        break
+                    default:
+                        this.restaurant.menu
+
+                }
+            }
+            return this.restaurant.menu
+        }
     },
     computed: {
         getCart(){
