@@ -18,9 +18,10 @@
             <v-row>
                 <v-col cols="4" v-for="item in getFilteredCalories()" :key="item.id">
                     <v-card>
+                        <v-img :src="item.image_url" height="300"></v-img>
                         <v-card-title>{{ item.name }}</v-card-title>
-                        <v-card-subtitle>Calories: {{ item.calories }}</v-card-subtitle>
-                        <v-card-subtitle>Price: {{ item.price }} RM</v-card-subtitle>
+                        <v-card-subtitle class="my-0 py-0">Calories: {{ item.calories }}</v-card-subtitle>
+                        <v-card-text>Price: {{ item.price }} RM</v-card-text>
                         <v-card-actions class="justify-center" v-if="user.hasOwnProperty('id') && cartHasMenuItem(item.id)">
                             <v-card-subtitle>Quantity: {{ cart.items['item' + item.id].quantity }}</v-card-subtitle>
                         </v-card-actions>

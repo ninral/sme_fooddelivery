@@ -5,7 +5,7 @@
                 <v-col>
                     <v-card>
                         <v-card-title class="justify-center" color="red white--text">Welcome, {{ getUserName }}</v-card-title>
-                        <v-card-subtitle>Here you can view your cart, your current order, and any previous order</v-card-subtitle>
+                        <v-card-subtitle class="text-center">Here you can view your cart, your current order, and any previous order</v-card-subtitle>
                     </v-card>
                 </v-col>
             </v-row>
@@ -14,17 +14,24 @@
                     <v-card v-if="cart">
                         <v-card-title class="justify-center">Your Cart</v-card-title>
 
-                        <v-card-title class="text-h5 ma-0 py-2">{{ getRestaurantName }}</v-card-title>
-                        <v-card-title class="text-h5 ma-0 py-2">Your Items:</v-card-title>
+                        <v-card-title class="text-h5 ma-0 py-2 justify-center">{{ getRestaurantName }}</v-card-title>
+                        <v-card-subtitle class="text-h5 ma-0 py-2 text-center">Your Items:</v-card-subtitle>
                         <v-list>
                             <v-list-item v-for="(item, index) in getCart.items" :key="index">
-                                <v-list-item-title>{{ getMenuItemName(index) }} - Quantity: {{ item.quantity }}</v-list-item-title>
+                              <v-row>
+                                <v-col>
+                                  <v-list-item-title class="text-right">{{ getMenuItemName(index) }}</v-list-item-title>
+                                </v-col>
+                                <v-col>
+                                  <v-list-item-title>Quantity: {{ item.quantity }}</v-list-item-title>
+                                </v-col>
+                              </v-row>
                             </v-list-item>
                         </v-list>
 
-                        <v-card-actions>
-                            <v-btn color="red white--text" outlined @click="emptyCart()">Empty Cart</v-btn>
-                            <v-btn color="red white--text" @click="checkout()">Checkout</v-btn>
+                        <v-card-actions class="text-center justify-center">
+                            <v-btn color="red white--text text-center" outlined @click="emptyCart()">Empty Cart</v-btn>
+                            <v-btn color="red white--text text-center" @click="checkout()">Checkout</v-btn>
                         </v-card-actions>
                     </v-card>
                     <v-card v-else>
